@@ -1,0 +1,175 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Guest Login</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Content/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <hr style="visibility:hidden">
+                    <h1 style="text-align:center">Guest Login</h1>
+                    <hr style="visibility:hidden">
+                    <div class="row justify-content-center">
+                        <!-- Earnings (Monthly) Card Example -->
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Login as a Guest Project Manager</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    @using (Html.BeginForm("GuestLogin", "Home", FormMethod.Post))
+                                    {
+                                        <input type="hidden" name="Status" value="Manager" />
+                                        <input class="btn btn-primary btn-user btn-block" type="submit" value="Guest Manager" formaction="GuestLogin" formmethod="post" />
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Login as a Guest Project Admin</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-user-tie fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    @using (Html.BeginForm("GuestLogin", "Home", FormMethod.Post))
+                                    {
+                                        <input type="hidden" name="Status" value="Admin" />
+                                        <input class="btn btn-success btn-user btn-block" type="submit" value="Guest Admin" formaction="GuestLogin" formmethod="post" />
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Login as a Guest Project Developer</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-user-circle fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    @using (Html.BeginForm("GuestLogin", "Home", FormMethod.Post))
+                                    {
+                                        <input type="hidden" name="Status" value="Developer" />
+                                        <input class="btn btn-info btn-user btn-block" type="submit" value="Guest Developer" formaction="GuestLogin" formmethod="post" />
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Login as a Guest Project Submitter</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-user-ninja fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    @using (Html.BeginForm("GuestLogin", "Home", FormMethod.Post))
+                                    {
+                                        <input type="hidden" name="Status" value="Submitter" />
+                                        <input class="btn btn-warning btn-user btn-block" type="submit" value="Guest Submitter" formaction="GuestLogin" formmethod="post" />
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <hr style="visibility:hidden">
+                    <div class="text-center">
+                        <a class="small" href="Login">Already have an account? Login!</a>
+                    </div>
+                    <div class="text-center">
+                        <a class="small" href="Forgot">Forgot Password?</a>
+                    </div>
+                    <div class="text-center">
+                        <a class="small" href="Register">Create an Account!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/Content/js/sb-admin-2.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('table.table-bordered').DataTable();
+            $(":submit").click(function () {
+                $(this).prop('disabled', true);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
+
+

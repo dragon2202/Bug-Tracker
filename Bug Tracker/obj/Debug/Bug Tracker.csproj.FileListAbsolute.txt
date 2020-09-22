@@ -1,0 +1,96 @@
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\Bug Tracker.dll.config
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\Bug Tracker.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\Bug Tracker.pdb
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\csc.exe
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\csc.exe.config
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\csc.rsp
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\csi.exe
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\csi.exe.config
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\csi.rsp
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\vbc.exe
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\vbc.exe.config
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\vbc.rsp
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\VBCSCompiler.exe
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\Antlr3.Runtime.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\Newtonsoft.Json.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Web.Helpers.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Web.Mvc.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Web.Optimization.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Web.Razor.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Web.WebPages.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Web.WebPages.Razor.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\WebGrease.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Web.Helpers.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Web.Mvc.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Web.Optimization.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Web.Razor.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Web.WebPages.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Web.WebPages.Razor.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\Newtonsoft.Json.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\Antlr3.Runtime.pdb
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.csproj.CopyComplete
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.pdb
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\mongocrypt.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\Crc32C.NET.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\DnsClient.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\MongoDB.Bson.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\MongoDB.Driver.Core.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\MongoDB.Driver.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\MongoDB.Libmongocrypt.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\SharpCompress.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\Snappy.NET.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Buffers.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\Crc32C.NET.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\DnsClient.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\MongoDB.Bson.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\MongoDB.Driver.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\MongoDB.Driver.Core.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\Snappy.NET.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Buffers.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Memory.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Numerics.Vectors.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Text.Encoding.CodePages.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Memory.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Numerics.Vectors.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\System.Text.Encoding.CodePages.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\MongoDB.Driver.GridFS.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\MongoDB.Driver.GridFS.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.csprojAssemblyReference.cache
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\SendGrid.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\StarkbankEcdsa.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\SendGrid.pdb
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\SendGrid.xml
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.csproj.CoreCompileInputs.cache
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\snappy32.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\snappy64.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\libzstd.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\System.Buffers.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\System.Memory.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\System.Numerics.Vectors.dll
+C:\Users\Calvin\Documents\Bug Tracker\Bug Tracker\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll

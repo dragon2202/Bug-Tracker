@@ -1,0 +1,915 @@
+﻿@model IEnumerable<Bug_Tracker.Models.Ticket>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Ticket Details</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Content/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="~/Content/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+</head>
+
+<body id="page-top" class=" = sidebar-toggled">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <li>
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("Dashboard", null, new { area = string.Empty, controller = "User" }, Request.Url.Scheme)">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3">Bug Tracker</div>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <li>
+                <hr class="sidebar-divider my-0">
+            </li>
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Dashboard", null, new { area = string.Empty, controller = "User" }, Request.Url.Scheme)">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <li>
+                <hr class="sidebar-divider">
+            </li>
+
+            <!-- Heading -->
+            <li>
+                <div class="sidebar-heading">
+                    Restricted Pages
+                </div>
+            </li>
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Admin</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Admin Pages:</h6>
+                        <a class="collapse-item" href="@Url.Action("ManageRoleProject", null, new { area = string.Empty, controller = "User" }, Request.Url.Scheme)">
+                            Manage Role
+                            <br>
+                            <small class="form-text text-muted">Change User Role/Status</small>
+                        </a>
+                        <a class="collapse-item" href="@Url.Action("ManageUser", null, new { area = string.Empty, controller = "User" }, Request.Url.Scheme)">
+                            Manage User
+                            <br>
+                            <small class="form-text text-muted">Invite or Remove User</small>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <li>
+                <hr class="sidebar-divider">
+            </li>
+
+            <!-- Heading -->
+            <li>
+                <div class="sidebar-heading">
+                    User Pages
+                </div>
+            </li>
+
+            <!-- Nav Item - Projects -->
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Project", null, new { area = string.Empty, controller = "User" }, Request.Url.Scheme)">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>My Projects</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Tickets -->
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Tickets", null, new { area = string.Empty, controller = "User" }, Request.Url.Scheme)">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>My Tickets</span>
+                </a>
+            </li>
+
+            @if (HttpContext.Current.Session["ID"].ToString() != "Guest")
+            {
+                <!-- Nav Item - Profile -->
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("UserProfile", null, new { area = string.Empty, controller = "User" }, Request.Url.Scheme)">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+            }
+
+            <!-- Divider -->
+            <li>
+                <hr class="sidebar-divider d-none d-md-block">
+            </li>
+            <!-- Sidebar Toggler (Sidebar) -->
+            <li class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </li>
+        </ul>
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Nav Item - Messages -->
+                        @if (HttpContext.Current.Session["ID"].ToString() != "Guest")
+                        {
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-envelope fa-fw"></i>
+                                    <!-- Counter - Messages -->
+                                    @{if (HttpContext.Current.Session["MessageList"] != null)
+                                        {
+                                            List<Bug_Tracker.Models.Message> messages = HttpContext.Current.Session["MessageList"] as List<Bug_Tracker.Models.Message>;
+
+                                            <span class="badge badge-danger badge-counter">
+                                                @messages.Count
+                                            </span>
+                                        }
+                                    }
+                                </a>
+                                <!-- Dropdown - Messages -->
+                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                                    <h6 class="dropdown-header">
+                                        Message
+                                    </h6>
+                                    @{if (HttpContext.Current.Session["MessageList"] != null)
+                                        {
+                                            //https://stackoverflow.com/questions/8194238/how-to-retrieve-a-generic-list-from-session
+                                            List<Bug_Tracker.Models.Message> messages = HttpContext.Current.Session["MessageList"] as List<Bug_Tracker.Models.Message>;
+                                            int condition = 5; //Default Message Size Shown on Screen is 5
+                                            if (messages != null)
+                                            {
+                                                if (messages.Count < 5)
+                                                {
+                                                    condition = messages.Count;
+                                                }
+
+                                                for (int i = 0; i < condition; i++)
+                                                {
+                                                    <a class="dropdown-item d-flex align-items-center" href="~/User/Message">
+                                                        <div class="font-weight-bold">
+                                                            <div class="text-truncate">Sender: @messages[i].Sender</div>
+                                                            <div class="small text-gray-500">Subject: @messages[i].Subject</div>
+                                                            <div class="small text-gray-500">Message: @messages[i].Content</div>
+                                                        </div>
+                                                    </a>
+                                                }
+                                            }
+
+                                        }
+                                    }
+                                    <a class="dropdown-item text-center small text-gray-500" href="~/User/Message">Read More Messages</a>
+                                    <a class="dropdown-item text-center small text-gray-500" href="~/User/SendMessage">Send a Message</a>
+                                </div>
+                            </li>
+                        }
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    @if (HttpContext.Current.Session["Username"] != null)
+                                    {
+                                        @HttpContext.Current.Session["Username"].ToString()
+                                    }
+                                </span>
+                                <img class="img-profile rounded-circle" src="~/Content/img/profile.png">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                @if (HttpContext.Current.Session["ID"].ToString() != "Guest")
+                                {
+                                    <a class="dropdown-item" href="@Url.Action("UserProfile", null, new { area = string.Empty, controller = "User" }, Request.Url.Scheme)">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Profile
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                }
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <!-- Page Heading -->
+                    <h3 class="h3 mb-4 text-gray-800">Ticket Details</h3>
+
+                    <div class="card" style="margin-bottom:20px">
+                        <div class="card-body">
+                            <h6 class="m-0 font-weight-bold text-primary">Ticket Details</h6>
+                            @foreach (var item in Model)
+                            {
+                                if (item.details.ticketStatus.ToString() == "Closed")
+                                {
+                                    <h6>This ticket is closed, therefore you are unable to change(i.e. upload attachment, edit ticket, add comment, etc.) the ticket. To reopen the ticket, ask the project manager to do so.</h6>
+                                }
+                                else
+                                {
+                                    <h6>This page allows you to view current ticket details and add more information(ie. uploading images, inserting comments) to your ticket. </h6>
+                                }
+                                <div>
+                                    @Html.ActionLink("Back to Ticket List", "Tickets") |
+                                    @using (Html.BeginForm("Redirect2", "User", FormMethod.Post, new { @style = "display: inline; line-height: 1" }))
+                                    {
+                                        @Html.Hidden("ProjectID", item.details.project_id);
+                                        @Html.Hidden("TicketID", item._id);
+                                        @Html.Hidden("Address", "EditTicket");
+                                        <button type="submit" style="padding:0;" class="btn btn-link">Go To Edit Ticket</button>
+                                    }
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                    @{//https://stackoverflow.com/questions/45865404/display-alert-message-on-ok-button-click-redirecttoaction
+                        var parameter = Request.QueryString["message"];
+                        //Check parameter here and display Message
+                        if (parameter == "AddComment")
+                        {
+                            <div class="alert alert-success alert-dismissable">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> A comment has been successfully uploaded</strong>
+                            </div>
+                        }
+                        if (parameter == "NoComment")
+                        {
+                            <div class="alert alert-warning alert-dismissable">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> You cannot upload an empty comment</strong>
+                            </div>
+                        }
+                        if (parameter == "UploadAttachment")
+                        {
+                            <div class="alert alert-success alert-dismissable">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> An Attachment has been successfully uploaded</strong>
+                            </div>
+                        }
+                        if (parameter == "noImage")
+                        {
+                            <div class="alert alert-warning alert-dismissable">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> You Must Select a Picture</strong>
+                            </div>
+                        }
+                    }
+                    <!-- Continue-->
+                    <div style="width: 100%;">
+                        <div style="width: 50%; float: left;">
+                            <div class="card" style="margin-right:10px; margin-bottom:10px">
+                                @foreach (var item in Model)
+                                {
+                                    <div class="card-header">
+                                        Details for @Html.DisplayFor(modelItem => item.details.ticketTitle)
+                                        <br>
+
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <span style="width: 50%; float: left;">
+                                                <strong>Ticket Title</strong>: @Html.DisplayFor(modelItem => item.details.ticketTitle)
+                                            </span>
+                                            <span style="width: 50%; float: left;">
+                                                <strong>Ticket Description</strong>: <a href="#" data-toggle="modal" data-target="#ticketDescription">Description</a>
+                                            </span>
+                                            <!-- Description Modal -->
+                                            <div class="modal fade" id="ticketDescription" tabindex="-1" role="dialog" aria-labelledby="ticketDescription" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="ticketDescription">Ticket Description</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            @Html.DisplayFor(modelItem => item.details.ticketDescription)
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span style="width: 50%; float: left;">
+                                                <strong>Assigned Developer</strong>: @Html.DisplayFor(modelItem => item.details.assignDeveloper)
+                                            </span>
+                                            <span style="width: 50%; float: left;">
+                                                <strong>Submitter</strong>: @Html.DisplayFor(modelItem => item.details.submitter)
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span style="width: 50%; float: left;">
+                                                <strong>Project Name</strong>: @Html.DisplayFor(modelItem => item.details.projectName)
+                                            </span>
+                                            <span style="width: 50%; float: left;">
+                                                <strong>Ticket Priority</strong>: @Html.DisplayFor(modelItem => item.details.ticketPriority)
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span style="width: 50%; float: left;">
+                                                <strong>Ticket Status</strong>: @Html.DisplayFor(modelItem => item.details.ticketStatus)
+                                            </span>
+                                            <span style="width: 50%; float: left;">
+                                                <strong>Ticket Type</strong>: @Html.DisplayFor(modelItem => item.details.ticketType)
+                                            </span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span style="width: 50%; float: left;">
+                                                <strong>Created</strong>: @Html.DisplayFor(modelItem => item.details.created)
+                                            </span>
+                                            <span style="width: 50%; float: left;">
+                                                <strong>Updated</strong>: @Html.DisplayFor(modelItem => item.details.updated)
+                                            </span>
+                                        </li>
+                                    </ul>
+                                }
+
+                            </div>
+                        </div>
+
+                        <div style="width: 50%; float: left; border-left: 1px solid grey">
+                            <h4 style="margin-left:20px">Add a Comment</h4>
+                            @foreach (var item in Model)
+                            {
+                                if (item.details.ticketStatus.ToString() == "Closed")
+                                {
+                                    <div class="container">
+                                        <div class="row">
+                                            <div style="width:80%">
+                                                <input type="text" name="comment" class="form-control" id="comment" placeholder="Comment" disabled>
+                                            </div>
+                                            <div style="width:15%; margin-left:10px">
+                                                <input type="submit" class="btn btn-primary mb-2" id="addCommentSubmit" value="Submit" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    using (Html.BeginForm("AddComment", "User", FormMethod.Post))
+                                    {
+                                        <div class="container">
+                                            <div class="row">
+                                                <div style="width:80%">
+                                                    <input type="text" name="comment" class="form-control" id="comment" placeholder="Comment">
+                                                    @Html.Hidden("TicketID", item._id)
+                                                </div>
+                                                <div style="width:15%; margin-left:10px">
+                                                    <input type="submit" class="btn btn-primary mb-2" id="addCommentSubmit" value="Submit">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            }
+                            <div class="card shadow mb-4" style="margin-left:10px;">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Comments</h6>
+                                    <h6>All the Comments in this Ticket</h6>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="table-responsive" max-width="100%">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Commenter</th>
+                                                    <th>Comment</th>
+                                                    <th>Created</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    for (int i = 0; i < item.comments.Count; i++)
+                                                    {
+                                                        <tr>
+                                                            <td>@Html.DisplayFor(modelItem => item.comments[i].commenter)</td>
+                                                            <td>@Html.DisplayFor(modelItem => item.comments[i].comment)</td>
+                                                            <td>@Html.DisplayFor(modelItem => item.comments[i].created)</td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style='clear:both'></div>
+
+                    <div style="width: 100%; border-top: 1px solid grey; ">
+                        <div style="width: 50%; float: left;">
+                            <div class="card shadow mb-4" style="margin-right:10px; margin-top:10px;">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Ticket History</h6>
+                                    <h6>History Information on this Ticket</h6>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="table-responsive" max-width="100%">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Editor</th>
+                                                    <th>Date Changed</th>
+                                                    <th>View Changes</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+
+                                                    for (int i = 0; i < item.histories.Count; i++)
+                                                    {
+                                                        <tr>
+                                                            <td>@Html.DisplayFor(modelItem => item.histories[i].Editor)</td>
+                                                            <td>@Html.DisplayFor(modelItem => item.histories[i].dateChanged)</td>
+                                                            <td>
+                                                                <!-- Button trigger modal -->
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#@("ID" + item._id)">
+                                                                    View Changes
+                                                                </button>
+
+                                                                <!-- Modal -->
+                                                                <div class="modal fade" id="@("ID" + item._id)" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog" role="document" style="width: 100%; max-width:100%; height : 100%; margin:0; padding: 50px;">
+                                                                        <div class="modal-content" style="height:auto; min-height:100%; border-radius:0">
+                                                                            <div class="modal-header">
+                                                                                <h4 class="modal-title">Ticket History</h4>
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <p class="font-weight-light">Changes made to the Ticket is highlighted in Coral</p>
+                                                                                <ul class="list-group" style="width: 50%; float: left;">
+                                                                                    <li class="list-group-item list-group-item-dark">
+                                                                                        @if (item.histories[i].oldValue.ticketTitle.ToString() != item.histories[i].newValue.ticketTitle.ToString())
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left; color: #FF6F61">
+                                                                                                <strong>Ticket Title: </strong> @Html.DisplayFor(modelitem => item.histories[i].oldValue.ticketTitle)
+                                                                                            </span>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left;">
+                                                                                                <strong>Ticket Title: </strong> @Html.DisplayFor(modelitem => item.histories[i].oldValue.ticketTitle)
+                                                                                            </span>
+                                                                                        }
+
+                                                                                        @if (item.histories[i].oldValue.ticketDescription.ToString() != item.histories[i].newValue.ticketDescription.ToString())
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left; color: #FF6F61">
+                                                                                                <strong>Ticket Description: </strong> @Html.DisplayFor(modelitem => item.histories[i].oldValue.ticketDescription)
+                                                                                            </span>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left;">
+                                                                                                <strong>Ticket Description: </strong> @Html.DisplayFor(modelitem => item.histories[i].oldValue.ticketDescription)
+                                                                                            </span>
+                                                                                        }
+                                                                                    </li>
+                                                                                    <li class="list-group-item list-group-item-dark">
+                                                                                        @if (item.histories[i].oldValue.assignDeveloper.ToString() != item.histories[i].newValue.assignDeveloper.ToString())
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left; color: #FF6F61">
+                                                                                                <strong>Assigned Developer: </strong> @Html.DisplayFor(modelitem => item.histories[i].oldValue.assignDeveloper)
+                                                                                            </span>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left;">
+                                                                                                <strong>Assigned Developer: </strong> @Html.DisplayFor(modelitem => item.histories[i].oldValue.assignDeveloper)
+                                                                                            </span>
+                                                                                        }
+
+                                                                                        @if (item.histories[i].oldValue.submitter.ToString() != item.histories[i].newValue.submitter.ToString())
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left; color: #FF6F61">
+                                                                                                <strong>Submitter: </strong> @Html.DisplayFor(modelitem => item.histories[i].oldValue.submitter)
+                                                                                            </span>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left;">
+                                                                                                <strong>Submitter: </strong> @Html.DisplayFor(modelitem => item.histories[i].oldValue.submitter)
+                                                                                            </span>
+                                                                                        }
+                                                                                    </li>
+                                                                                    <li class="list-group-item list-group-item-dark">
+                                                                                        @if (item.histories[i].oldValue.projectName.ToString() != item.histories[i].newValue.projectName.ToString())
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left; color: #FF6F61">
+                                                                                                <strong>Project Name: </strong> @Html.DisplayFor(modelitem => item.histories[i].oldValue.projectName)
+                                                                                            </span>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left;">
+                                                                                                <strong>Project Name: </strong> @Html.DisplayFor(modelitem => item.histories[i].oldValue.projectName)
+                                                                                            </span>
+                                                                                        }
+
+                                                                                        @if (item.histories[i].oldValue.ticketPriority.ToString() != item.histories[i].newValue.ticketPriority.ToString())
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left; color: #FF6F61">
+                                                                                                <strong>Ticket Priority: </strong> @Html.DisplayFor(modelitem => item.histories[i].oldValue.ticketPriority)
+                                                                                            </span>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left;">
+                                                                                                <strong>Ticket Priority: </strong> @Html.DisplayFor(modelitem => item.histories[i].oldValue.ticketPriority)
+                                                                                            </span>
+                                                                                        }
+                                                                                    </li>
+                                                                                    <li class="list-group-item list-group-item-dark">
+                                                                                        @if (item.histories[i].oldValue.ticketStatus.ToString() != item.histories[i].newValue.ticketStatus.ToString())
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left; color: #FF6F61">
+                                                                                                <strong>Ticket Status: </strong> @Html.DisplayFor(modelitem => item.histories[i].oldValue.ticketStatus)
+                                                                                            </span>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left;">
+                                                                                                <strong>Ticket Status: </strong> @Html.DisplayFor(modelitem => item.histories[i].oldValue.ticketStatus)
+                                                                                            </span>
+                                                                                        }
+
+                                                                                        @if (item.histories[i].oldValue.ticketType.ToString() != item.histories[i].newValue.ticketType.ToString())
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left; color: #FF6F61">
+                                                                                                <strong>Ticket Type: </strong> @Html.DisplayFor(modelitem => item.histories[i].oldValue.ticketType)
+                                                                                            </span>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left;">
+                                                                                                <strong>Ticket Type: </strong> @Html.DisplayFor(modelitem => item.histories[i].oldValue.ticketType)
+                                                                                            </span>
+                                                                                        }
+                                                                                    </li>
+                                                                                </ul>
+
+                                                                                <ul class="list-group" style="width: 50%; float: left;">
+                                                                                    <li class="list-group-item list-group-item-dark">
+                                                                                        @if (item.histories[i].oldValue.ticketTitle.ToString() != item.histories[i].newValue.ticketTitle.ToString())
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left; color: #FF6F61">
+                                                                                                <strong>Ticket Title: </strong> @Html.DisplayFor(modelitem => item.histories[i].newValue.ticketTitle)
+                                                                                            </span>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left;">
+                                                                                                <strong>Ticket Title: </strong> @Html.DisplayFor(modelitem => item.histories[i].newValue.ticketTitle)
+                                                                                            </span>
+                                                                                        }
+
+                                                                                        @if (item.histories[i].oldValue.ticketDescription.ToString() != item.histories[i].newValue.ticketDescription.ToString())
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left; color: #FF6F61">
+                                                                                                <strong>Ticket Description: </strong> @Html.DisplayFor(modelitem => item.histories[i].newValue.ticketDescription)
+                                                                                            </span>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left;">
+                                                                                                <strong>Ticket Description: </strong> @Html.DisplayFor(modelitem => item.histories[i].newValue.ticketDescription)
+                                                                                            </span>
+                                                                                        }
+                                                                                    </li>
+                                                                                    <li class="list-group-item list-group-item-dark">
+                                                                                        @if (item.histories[i].oldValue.assignDeveloper.ToString() != item.histories[i].newValue.assignDeveloper.ToString())
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left; color: #FF6F61">
+                                                                                                <strong>Assigned Developer: </strong> @Html.DisplayFor(modelitem => item.histories[i].newValue.assignDeveloper)
+                                                                                            </span>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left;">
+                                                                                                <strong>Assigned Developer: </strong> @Html.DisplayFor(modelitem => item.histories[i].newValue.assignDeveloper)
+                                                                                            </span>
+                                                                                        }
+
+                                                                                        @if (item.histories[i].oldValue.submitter.ToString() != item.histories[i].newValue.submitter.ToString())
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left; color: #FF6F61">
+                                                                                                <strong>Submitter: </strong> @Html.DisplayFor(modelitem => item.histories[i].newValue.submitter)
+                                                                                            </span>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left;">
+                                                                                                <strong>Submitter: </strong> @Html.DisplayFor(modelitem => item.histories[i].newValue.submitter)
+                                                                                            </span>
+                                                                                        }
+                                                                                    </li>
+                                                                                    <li class="list-group-item list-group-item-dark">
+                                                                                        @if (item.histories[i].oldValue.projectName.ToString() != item.histories[i].newValue.projectName.ToString())
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left; color: #FF6F61">
+                                                                                                <strong>Project Name: </strong> @Html.DisplayFor(modelitem => item.histories[i].newValue.projectName)
+                                                                                            </span>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left;">
+                                                                                                <strong>Project Name: </strong> @Html.DisplayFor(modelitem => item.histories[i].newValue.projectName)
+                                                                                            </span>
+                                                                                        }
+
+                                                                                        @if (item.histories[i].oldValue.ticketPriority.ToString() != item.histories[i].newValue.ticketPriority.ToString())
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left; color: #FF6F61">
+                                                                                                <strong>Ticket Priority: </strong> @Html.DisplayFor(modelitem => item.histories[i].newValue.ticketPriority)
+                                                                                            </span>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left;">
+                                                                                                <strong>Ticket Priority: </strong> @Html.DisplayFor(modelitem => item.histories[i].newValue.ticketPriority)
+                                                                                            </span>
+                                                                                        }
+                                                                                    </li>
+                                                                                    <li class="list-group-item list-group-item-dark">
+                                                                                        @if (item.histories[i].oldValue.ticketStatus.ToString() != item.histories[i].newValue.ticketStatus.ToString())
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left; color: #FF6F61">
+                                                                                                <strong>Ticket Status: </strong> @Html.DisplayFor(modelitem => item.histories[i].newValue.ticketStatus)
+                                                                                            </span>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left;">
+                                                                                                <strong>Ticket Status: </strong> @Html.DisplayFor(modelitem => item.histories[i].newValue.ticketStatus)
+                                                                                            </span>
+                                                                                        }
+
+                                                                                        @if (item.histories[i].oldValue.ticketType.ToString() != item.histories[i].newValue.ticketType.ToString())
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left; color: #FF6F61">
+                                                                                                <strong>Ticket Type: </strong> @Html.DisplayFor(modelitem => item.histories[i].newValue.ticketType)
+                                                                                            </span>
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <span style="width: 50%; float: left;">
+                                                                                                <strong>Ticket Type: </strong> @Html.DisplayFor(modelitem => item.histories[i].newValue.ticketType)
+                                                                                            </span>
+                                                                                        }
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--https://stackoverflow.com/questions/4988436/mongodb-gridfs-with-c-how-to-store-files-such-as-images-->
+                        <div style="width: 50%; float: left; border-left: 1px solid grey;">
+                            <h4 style="margin-left:20px; margin-top:20px">Upload Attachment/Image</h4>
+                            @foreach (var item in Model)
+                            {
+                                if (item.details.ticketStatus.ToString() == "Closed")
+                                {
+                                    <div style="margin-left:10px; margin-top:10px">
+                                        <input type="file" id="theFile" name="theFile" class="form-control" disabled /><!--File-->
+                                        <input type="text" name="comment" class="form-control" id="comment" style="margin-top:10px" placeholder="Comments on Attachment" disabled><!--Comment on File-->
+                                        <small class="form-text text-muted">Uploading anything besides images, might cause very long wait times or an error.</small>
+                                    </div>
+                                    <input type="submit" class="btn btn-primary mb-2" style="margin-left:10px; margin-top:10px" value="Submit" disabled>
+                                }
+                                else
+                                {
+                                    using (Html.BeginForm("UploadAttachment", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        <div style="margin-left:10px; margin-top:10px">
+                                            <input type="file" id="theFile" name="theFile" class="form-control" /><!--File-->
+                                            <input type="text" name="comment" class="form-control" id="comment" style="margin-top:10px" placeholder="Comments on Attachment"><!--Comment on File-->
+                                            <small class="form-text text-muted">Uploading anything besides images, might cause very long wait times or an error.</small>
+                                            @Html.Hidden("TicketID", item._id)
+                                        </div>
+
+                                        <input type="submit" class="btn btn-primary mb-2" style="margin-left:10px; margin-top:10px" value="Submit">
+                                    }
+                                }
+                            }
+                            <div class="card shadow mb-4" style="margin-top:10px; margin-left:10px">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Ticket Attachment(s)</h6>
+                                    <h6>All files associated to this ticket</h6>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="table-responsive" max-width="100%">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Uploader</th>
+                                                    <th>File</th>
+                                                    <th>Note</th>
+                                                    <th>Created</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    for (int i = 0; i < item.attachments.Count; i++)
+                                                    {
+                                                        <tr>
+                                                            <td>@Html.DisplayFor(modelItem => item.attachments[i].uploader)</td>
+                                                            <td>
+                                                                <!-- Button trigger modal -->
+                                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#@("ID" + item.attachments[i].pictureID)">
+                                                                    View Image
+                                                                </button>
+
+                                                                <!-- Modal -->
+                                                                <div class="modal fade" id="@("ID" + item.attachments[i].pictureID)" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-lg" role="document">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="modal-body">
+                                                                                <img src="@string.Format("/User/ShowPicture/{0}", item.attachments[i].pictureID.ToString())" alt="An Error has Occured" style="max-height:350px" />
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>@Html.DisplayFor(modelItem => item.attachments[i].notes)</td>
+                                                            <td>@Html.DisplayFor(modelItem => item.attachments[i].created)</td>
+                                                        </tr>
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Bug Tracker 2020</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    @using (Html.BeginForm("Logout", "User", FormMethod.Post))
+                    {
+                        <button type="submit" class="btn btn-primary">Log Out</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/Content/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="~/Content/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/Content/js/demo/datatables-demo.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('table.table-bordered').DataTable();
+            $(":submit").click(function () {
+                $(this).prop('disabled', true);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

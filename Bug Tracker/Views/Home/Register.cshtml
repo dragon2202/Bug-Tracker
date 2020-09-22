@@ -1,0 +1,143 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Register</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/Content/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</head>
+
+<body class="bg-gradient-primary">
+    <div class="container">
+        @{//https://stackoverflow.com/questions/45865404/display-alert-message-on-ok-button-click-redirecttoaction
+            var parameter = Request.QueryString["message"];
+            //Check parameter here and display Message
+            if (parameter == "FillAll")
+            {
+                <div class="alert alert-warning alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Please Fill All Fields</strong>
+                </div>
+            }
+            if (parameter == "success")
+            {
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Registration Is Successful</strong>
+                </div>
+            }
+            if (parameter == "registered")
+            {
+                <div class="alert alert-danger alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Email Address Is Already Registered</strong>
+                </div>
+            }
+            if (parameter == "nonmatch")
+            {
+                <div class="alert alert-danger alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Passwords Don't Match</strong>
+                </div>
+            }
+        }
+
+
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                            </div>
+                            @using (Html.BeginForm("Register", "Home", FormMethod.Post))
+                            {
+                                <div class="form-group">
+                                    @Html.Editor("Username", new { htmlAttributes = new { @class = "form-control", placeholder = "User Name" } })
+                                </div>
+                                <div class="form-group">
+                                    @Html.Editor("Email", new { htmlAttributes = new { @class = "form-control", type = "email", placeholder = "Email Address" } })
+                                    <p class="font-weight-light" style="font-size:70%;">Please use a real email if you want to utilize password recovery in the future, if not you can use a false email.<p>
+                                </div>
+                                <div class="form-group">
+                                    @Html.Editor("Password", new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "Password" } })
+                                </div>
+                                <div class="form-group">
+                                    @Html.Editor("ConfirmPassword", new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "Confirm Password" } })
+                                </div>
+                                <input class="btn btn-primary btn-user btn-block" type="submit" name="Register" value="Register" formaction="Register" formmethod="post" />
+                                //<input type="submit" name="Test" value="Test" formaction="Test" formmethod="post" />
+
+                            }
+                            <!--
+                            <hr>
+                            <a href="index.html" class="btn btn-google btn-user btn-block">
+                                <i class="fab fa-google fa-fw"></i> Register with Google
+                            </a>
+                            <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                            </a>
+                            <hr>
+                            -->
+                            <div class="text-center">
+                                <a class="small" href="Forgot">Forgot Password?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="Login">Already have an account? Login!</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="GuestLogin">Login as Guest</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/Content/js/sb-admin-2.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(":submit").click(function () {
+                $(this).prop('disabled', true);
+            });
+        });
+    </script>
+</body>
+
+</html>
