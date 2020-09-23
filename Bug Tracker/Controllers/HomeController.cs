@@ -232,7 +232,7 @@ namespace Bug_Tracker.Controllers
             {
                 Host = "<html><body><a href='https://" + System.Web.HttpContext.Current.Request.Url.Host + "/Home/ResetPassword" + id + "'>Reset</a>";//Production Link
             }
-            var key = "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";
+            var key = "";//REMOVED For Security Reasons. A SendGrid api key would be here instead
             var client = new SendGridClient(key);
             var from = new EmailAddress("em2999@gmail.com", "Bug Tracker");
             var subject = "Password Reset";
