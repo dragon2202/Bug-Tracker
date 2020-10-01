@@ -48,52 +48,52 @@ My Bug Tracker web app is a ASP.NET Framework 4.7 side project. It's primary fun
   <img src="Bug-Tracker Screenshot/User/Edit Ticket Details.png" height="260">
   <img src="Bug-Tracker Screenshot/User/Edit Ticket Comments.png" height="260">
   <br>
-  <img src="Bug-Tracker Screenshot/User/Edit Ticket Attachments.png" height="260">
-  <img src="Bug-Tracker Screenshot/User/Edit Ticket Histories.png" height="260">
+  <img src="Bug-Tracker Screenshot/User/Edit Ticket Attachments.png" height="280">
+  <img src="Bug-Tracker Screenshot/User/Edit Ticket Histories.png" height="280">
 </p>
 
 ### Admin Pages
 <p>The <b>Manage Project User</b> page displays all the projects where the current user is either a manager or admin. When a project is displayed, it will give the manager/admin the option to go invite or remove a user.</p>
 <p float="left">
-  <img src="Bug-Tracker Screenshot/User/Manage Project User.png" height="400">
+  <img src="Bug-Tracker Screenshot/User/Manage Project User.png" height="600">
 </p>
 <p>The <b>User Invite</b> page display all the users registed on the website. The datatable search on the top right of the table can be used if you know their username or email. The <b>Remove User</b> page simply allows managers/admins to remove users from project.</p>
 <p float="left">
-  <img src="Bug-Tracker Screenshot/User/User Invite.png" height="400">
-  <img src="Bug-Tracker Screenshot/User/Remove User.png" height="400">
+  <img src="Bug-Tracker Screenshot/User/User Invite.png" height="600">
+  <img src="Bug-Tracker Screenshot/User/Remove User.png" height="600">
 </p>
 <p>The <b>Manage Role Project</b> page displays all projects where the current user is a Manager, if the current user is not a Manager of any project the page will be an empty table.</p>
 <p float="left">
-  <img src="Bug-Tracker Screenshot/User/Manage Role Project.png" height="400">
+  <img src="Bug-Tracker Screenshot/User/Manage Role Project.png" height="600">
 </p>
 <p>The <b>Manage Role Assignment</b> page displays all the users within the project. This page is only accessible for managers. This page allows the manager can change the user(s) status within the project.</p>
 <p float="left">
-  <img src="Bug-Tracker Screenshot/User/Manage Role Assign.png" height="400">
+  <img src="Bug-Tracker Screenshot/User/Manage Role Assign.png" height="600">
 </p>
 
 ### Messages
 <p>The <b>Message</b> page displays all the user's messages and invites. This page is like an e-mail's inbox within the website.</p>
 <p float="left">
-  <img src="Bug-Tracker Screenshot/User/Message.png" height="400">
+  <img src="Bug-Tracker Screenshot/User/Message.png" height="600">
 </p>
 <p>The <b>Send Message</b> page allows users to send messages to other users within the website. You can mass send an email, as this page allows you to muliselect users.</p>
 <p float="left">
-  <img src="Bug-Tracker Screenshot/User/Send Message.png" height="400">
+  <img src="Bug-Tracker Screenshot/User/Send Message.png" height="600">
 </p>
 
 ### Profile
 <p>The <b>User Profile</b> page allows the user to change their current account information(Username, Email, and Password). To update the current information, you would need to input your current password</p>
 <p float="left">
-  <img src="Bug-Tracker Screenshot/User/User Profile.png" height="400">
+  <img src="Bug-Tracker Screenshot/User/User Profile.png" height="600">
 </p>
 
 ### Error Pages
 <p>The <b>Not Found</b> and <b>Unauthorized</b> pages are Error pages that are displayed when a specific error is thrown.</p>
 <p float="left">
-  <img src="Bug-Tracker Screenshot/User/Not Found.png" height="400">
+  <img src="Bug-Tracker Screenshot/Error/Not Found.png" height="600">
 </p>
 <p float="left">
-  <img src="Bug-Tracker Screenshot/User/Unauthorized.png" height="400">
+  <img src="Bug-Tracker Screenshot/Error/Unauthorized.png" height="600">
 </p>
 ## Installation
 Download Visual Studio using this [link](https://visualstudio.microsoft.com/downloads/) to run the project. The Community is the free version.
