@@ -6,6 +6,35 @@ My Bug Tracker web app is a ASP.NET Framework 4.7 side project. It's primary fun
 * MongoDB as backend - [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
 * Written in HTML with [Razor Syntax](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/razor?view=aspnetcore-3.1) and C#
 
+## Installation
+Download Visual Studio using this [link](https://visualstudio.microsoft.com/downloads/) to run the project. The Community is the free version.
+Download Zip from this GitHub and extract it into a folder. The files you need are in the folders Bug Tracker and Packages as shown below. 
+<img src="Screenshots/Zip.png" height="450">
+<br>
+Install and run Visual Studio. Once that done, you should be on Get Started page. Select Open a Local Folder option to find the extracted files. 
+<br>
+<img src="Screenshots/Step 1.png" height="600">
+<br>
+Double click the extracted folder, which was named Bug-Tracker-Master for me.
+<br>
+<img src="Screenshots/Step 2.png" height="600"> 
+<br>
+Once you're on this page, with the packages. Click Select Folder at the bottom right.
+<br>
+<img src="Screenshots/Step 3.png" height="600">
+<br>
+Once it's all loaded. Click on View and select Solution Explorer to find all the files.
+<br>
+<img src="Screenshots/Step 4.png" height="600">
+<br>
+Double Click on the solution. It's named Bug Tracker.sln for me.
+<br>
+<img src="Screenshots/Step 5.png" height="600">
+<br>
+After this, you should be all set to run this application. To run select IIS Express to run it on your browser.
+<br>
+<img src="Screenshots/Step 6.png" height="600">
+
 ## Features
 ### Account Creation and Login
 <p>You create/register an account, and reset your password via email in case you forget</p>
@@ -95,31 +124,3 @@ My Bug Tracker web app is a ASP.NET Framework 4.7 side project. It's primary fun
 <p float="left">
   <img src="Bug-Tracker Screenshot/Error/Unauthorized.png" height="600">
 </p>
-## Installation
-Download Visual Studio using this [link](https://visualstudio.microsoft.com/downloads/) to run the project. The Community is the free version.
-Download Zip from this GitHub and extract it into a folder. The files you need are in the folders Bug Tracker and Packages as shown below. 
-<img src="Screenshots/Zip.png" height="450">
-<br>
-Install and run Visual Studio. Once that done, you should be on Get Started page. Select Open a Local Folder option to find the extracted files. 
-<br>
-<img src="Screenshots/Step 1.png" height="600">
-<br>
-Double click the extracted folder, which was named Bug-Tracker-Master for me.
-<br>
-<img src="Screenshots/Step 2.png" height="600"> 
-<br>
-Once you're on this page, with the packages. Click Select Folder at the bottom right.
-<br>
-<img src="Screenshots/Step 3.png" height="600">
-<br>
-Once it's all loaded. Click on View and select Solution Explorer to find all the files.
-<br>
-<img src="Screenshots/Step 4.png" height="600">
-<br>
-Double Click on the solution. It's named Bug Tracker.sln for me.
-<br>
-<img src="Screenshots/Step 5.png" height="600">
-<br>
-After this, you should be all set to run this application. To run select IIS Express to run it on your browser.
-<br>
-<img src="Screenshots/Step 6.png" height="600">
