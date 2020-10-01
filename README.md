@@ -90,7 +90,7 @@ My Bug Tracker web app is a ASP.NET Framework 4.7 side project. It's primary fun
 ### Error Pages
 <p>The <b>Not Found</b> and <b>Unauthorized</b> pages are Error pages that are displayed when a specific error is thrown.</p>
 <p float="left">
-  <img src="Bug-Tracker Screenshot/Error/Not Found.png" height="600">
+  <img src="Bug-Tracker Screenshot/Error/NotFound.png" height="600">
 </p>
 <p float="left">
   <img src="Bug-Tracker Screenshot/Error/Unauthorized.png" height="600">
@@ -102,24 +102,24 @@ Download Zip from this GitHub and extract it into a folder. The files you need a
 <br>
 Install and run Visual Studio. Once that done, you should be on Get Started page. Select Open a Local Folder option to find the extracted files. 
 <br>
-<img src="Screenshots/Step 1.png" height="450">
+<img src="Screenshots/Step 1.png" height="600">
 <br>
 Double click the extracted folder, which was named Bug-Tracker-Master for me.
 <br>
-<img src="Screenshots/Step 2.png" height="450"> 
+<img src="Screenshots/Step 2.png" height="600"> 
 <br>
 Once you're on this page, with the packages. Click Select Folder at the bottom right.
 <br>
-<img src="Screenshots/Step 3.png" height="450">
+<img src="Screenshots/Step 3.png" height="600">
 <br>
 Once it's all loaded. Click on View and select Solution Explorer to find all the files.
 <br>
-<img src="Screenshots/Step 4.png" height="450">
+<img src="Screenshots/Step 4.png" height="600">
 <br>
 Double Click on the solution. It's named Bug Tracker.sln for me.
 <br>
-<img src="Screenshots/Step 5.png" height="450">
+<img src="Screenshots/Step 5.png" height="600">
 <br>
 After this, you should be all set to run this application. To run select IIS Express to run it on your browser.
 <br>
-<img src="Screenshots/Step 6.png" height="450">
+<img src="Screenshots/Step 6.png" height="600">
