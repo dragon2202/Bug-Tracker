@@ -77,8 +77,8 @@ After this, you should be all set to run this application. To run select IIS Exp
   <img src="Bug-Tracker Screenshot/User/Edit Ticket Details.png" height="260">
   <img src="Bug-Tracker Screenshot/User/Edit Ticket Comments.png" height="260">
   <br>
-  <img src="Bug-Tracker Screenshot/User/Edit Ticket Attachments.png" height="280">
-  <img src="Bug-Tracker Screenshot/User/Edit Ticket Histories.png" height="280">
+  <img src="Bug-Tracker Screenshot/User/Edit Ticket Attachments.png" height="260">
+  <img src="Bug-Tracker Screenshot/User/Edit Ticket Histories.png" height="260">
 </p>
 
 ### Admin Pages
